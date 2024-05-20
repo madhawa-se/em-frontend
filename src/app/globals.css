@@ -1,0 +1,26 @@
+/* src/styles.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+    --color-primary: #6500e4;
+}
+
+
+.title-bar {
+    .title {
+        background-color: var(--color-primary);
+        padding: 10px;
+        color: #fff;
+    }
+}
+
+button.img-icon-btn {
+    border-radius: 20px;
+    padding: 10px;
+
+    .img-icon{
+        fill: #fff;
+    }
+}
