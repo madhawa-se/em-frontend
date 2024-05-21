@@ -5,7 +5,7 @@ import "./viewSwitch.scss";
 import ListIcon from '../../../public/icons/list-solid.svg'
 import GridIcon from '../../../public/icons/table-cells-solid.svg'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { settingsSlice } from '../../store';
+import { settingsSlice } from '../../store/slices/settings-slice';
 
 const ViewSwitch: React.FC = () => {
     const dispatch = useAppDispatch();
