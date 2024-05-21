@@ -1,6 +1,6 @@
 'use client'
 import { useRef } from 'react';
-import { AppStore, employeesSlice, makeStore } from '.';
+import { AppStore, makeStore } from '.';
 import { Provider } from 'react-redux';
 
 
