@@ -14,7 +14,7 @@ export default function EditEmployeePage() {
   const dispatch = useAppDispatch();
   const { employeeId } = useParams();
 
-  const employee = useAppSelector(state => state.employees.data?.find((employee: { id: string }) => employee.id === employeeId));
+  const employee = useAppSelector(state => state.employees.data?.find((employee) => employee.id === employeeId));
   if (!employee) {
     return notFound()
   }

@@ -18,10 +18,10 @@ const AddEmployeePage = () => {
   async function handleFormSubmition(employee: IEmployee): Promise<void> {
   
     try {
-      const {employeeRes} = await dispatch(addEmployee(employee));
-      toast('success')
-    } catch (err) {
-      toast('error')
+      await dispatch(addEmployee(employee));
+      toast('Employee added');
+    } catch (err) {;
+      toast('error');
     }
   }
 
