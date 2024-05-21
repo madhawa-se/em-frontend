@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./page.scss"
@@ -12,7 +12,11 @@ import { IEmployee } from "../../../definitions/interfaces/employee-interface";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { deleteEmployee } from "../../../store/thunk/deleteEmployee";
 import { fetchEmployees } from "../../../store/thunk/fetchEmployee";
-
+import Link from "next/link";
+import NavBar from "@components//nav/nav-bar";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import Spinner from "@components//spinner/spinner";
 // import { useDispatch } from "react-redux";
 
 export default function Home() {
@@ -27,61 +31,65 @@ export default function Home() {
     dispatch(fetchEmployees());
   }, [dispatch]);
 
-  async function handleFormSubmition(data: IEmployee) {
-    console.log("data ", data);
-
-  }
-
   const onEdit = useCallback((employee: IEmployee) => {
     router.push(`/employee/edit/${employee.id}`);
   }, [router]);
 
-  const onDelete = useCallback(async (employee: IEmployee) => {
-    console.log("Wow so easy!", employee);
-    // toast("Wow so easy!");
-    try {
-      const user = await dispatch(deleteEmployee(employee));
-      toast('success');
-    } catch (err) {
-      toast('error');
-    }
-  }, [dispatch]);
+  const deleteUser = async (employee: IEmployee) => {
+    const MySwal = withReactContent(Swal)
+
+    MySwal.fire({
+      title: "<strong>Confirmation</strong>",
+      icon: "warning",
+      html: "Do you want to delete this employee ?",
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: "Delete",
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteEmployee(employee));
+      }
+    })
+
+  }
 
   return (
-
     <>
       <header>
-        <div className="title-bar">
-          <h1 className="title">Employee Manager</h1>
-        </div>
+        <NavBar></NavBar>
         <div className="container mx-auto">
 
 
           <div className="tool-bar my-6">
 
             <div className="flex justify-end space-x-4">
-              <button className="text-white px-4 py-2 rounded btn-add">ADD EMPLOYEE</button>
+              <button className="text-white px-4 py-2 rounded btn-ovel"><Link href="/employee/add">Add Employee</Link></button>
               <ViewSwitch></ViewSwitch>
+            </div>
+
+
+            <div>
+              <Spinner show={isLoading}></Spinner>
             </div>
           </div>
         </div>
       </header>
 
       <main className="">
-
         <div className="container mx-auto">
-          {isLoading && <div>Loading data</div>}
-
-          {viewMode === "table" && <TableView employees={employees} onEdit={onEdit} onDelete={onDelete}></TableView>}
+          {viewMode === "table" && <TableView employees={employees} onEdit={onEdit} onDelete={deleteUser}></TableView>}
           {viewMode === "grid" &&
             <div className="container mx-auto">
               <div className="grid-col-wrap flex flex-row flex-wrap">
-                {employees.map((employee: IEmployee) => <EmployeeCard key={employee.id} employee={employee} onDelete={onDelete} onEdit={onEdit}></EmployeeCard>)}
+                {employees.map((employee: IEmployee) => <EmployeeCard key={employee.id} employee={employee} onDelete={deleteUser} onEdit={onEdit}></EmployeeCard>)}
               </div>
             </div>
           }
         </div>
       </main>
+
     </>
   );
 }
