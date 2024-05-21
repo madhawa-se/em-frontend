@@ -7,12 +7,12 @@
 
     // Media query for tablet size
     @media (max-width: 768px) {
-        width: calc(50% - 28px);
+        width: calc(50% - 28px) !important;
     }
 
     // Media query for mobile size
     @media (max-width: 480px) {
-        width: calc(100% - 28px);
+        width: calc(100% - 28px) !important;;
     }
 
     .card-body {
