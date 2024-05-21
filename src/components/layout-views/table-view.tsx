@@ -57,13 +57,13 @@ const TableView: React.FC<TableViewProps> = ({ employees, onEdit, onDelete }) =>
                   <td>
                     <div className="op flex flex-row justify-center items-center ml-4">
 
-                      {/* <button className="btn-sq-edit" onClick={() => onEdit(employee)}>
+                      <button className="btn-sq-edit" onClick={() => onEdit(employee)}>
                         <EditIcon className="img-icon" height={20} width={20}></EditIcon>
                       </button>
 
                       <button className="btn-sq-trash" onClick={() => onDelete(employee)}>
                         <TrashIcon className="img-icon" height={20} width={20}></TrashIcon>
-                      </button> */}
+                      </button>
 
                     </div>
                   </td>
