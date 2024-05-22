@@ -26,8 +26,4 @@ To run the app locally, follow these steps:
 3. Run `npm install` to install dependencies.
 4. Run `npm run dev` for development mode or `npm run build` for production build.
 
-## Guide
-
-To change the number of items displayed per page, you can pass a custom count to the Pagination component. However, on smaller screens, this custom count won't be used; instead, the configured count specific to that screen size will be applied.
-
 
