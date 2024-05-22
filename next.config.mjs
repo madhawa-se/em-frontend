@@ -17,6 +17,16 @@ const nextConfig = {
 
     return config
   },
+
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/employee/list',
+        permanent: true,
+      },
+    ]
+  },
 };
 
 export default nextConfig;

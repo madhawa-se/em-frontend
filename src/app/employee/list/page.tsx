@@ -29,7 +29,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(fetchEmployees());
-  }, [dispatch]);
+  }, []);
 
   const onEdit = useCallback((employee: IEmployee) => {
     router.push(`/employee/edit/${employee.id}`);
@@ -65,7 +65,7 @@ export default function Home() {
           <div className="tool-bar my-6">
 
             <div className="flex justify-end space-x-4">
-              <button className="text-white px-4 py-2 rounded btn-ovel"><Link href="/employee/add">Add Employee</Link></button>
+              <Link className="text-white px-4 py-2 rounded btn-ovel" href="/employee/add">Add Employee</Link>
               <ViewSwitch></ViewSwitch>
             </div>
 

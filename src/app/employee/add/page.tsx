@@ -16,11 +16,12 @@ const AddEmployeePage = () => {
 
 
   async function handleFormSubmition(employee: IEmployee): Promise<void> {
-  
+
     try {
       await dispatch(addEmployee(employee));
       toast('Employee added');
-    } catch (err) {;
+    } catch (err) {
+      ;
       toast('error');
     }
   }
@@ -29,7 +30,7 @@ const AddEmployeePage = () => {
     <NavBar></NavBar>
     <div className="container mx-auto">
       <div className="flex justify-end space-x-4 my-6">
-        <button className="text-white px-4 py-2 rounded btn-ovel"><Link href="/employee/list">LIST VIEW</Link></button>
+        <Link className="text-white px-4 py-2 rounded btn-ovel" href="/employee/list">LIST VIEW</Link>
       </div>
 
       <div>

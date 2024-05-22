@@ -33,7 +33,7 @@ export default function EditEmployeePage() {
 
     <div className="container mx-auto">
       <div className="flex justify-end space-x-4 my-6">
-        <button className="text-white px-4 py-2 rounded btn-ovel"><Link href="/employee/list">LIST VIEW</Link></button>
+        <Link className="text-white px-4 py-2 rounded btn-ovel" href="/employee/list">LIST VIEW</Link>
       </div>
       <EmployeeForm onSubmitCallback={handleFormSubmition} edit employee={employee}></EmployeeForm>
     </div>
